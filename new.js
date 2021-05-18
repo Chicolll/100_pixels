@@ -269,6 +269,32 @@ function zoomOut(){
   zoomout.play;
 }
 
+function zoomInImage(){
+  var zoomin = anime({
+    targets: '#singleLineImage',
+    height: '70vh',
+    easing: 'easeInOutQuad',
+    duration: 77000,
+    // complete: function(anim){ if (anim.completed == true){
+    //   leaveEarth = false;
+    // }}
+  });
+  zoomin.play;
+  console.log("zoom");
+}
+function zoomOutImage(){
+  var zoomin = anime({
+    targets: '#singleLineImage',
+    height: '40vh',
+    easing: 'easeInOutQuad',
+    duration: 500,
+    // complete: function(anim){ if (anim.completed == true){
+    //   leaveEarth = false;
+    // }}
+  });
+  zoomin.play;
+  console.log("zoom");
+}
 function hideTitle(){
 
 }
@@ -449,13 +475,14 @@ async function nextTravelText(){
     else if (currPlanet > lastPlanetNum) {
       console.log("currplanet: "+currPlanet);
       var waitTime = (travelLines[currPlanet-firstPlanetNum][currTravelLine+1])*1000;
-      if (!showingSinlgeImage){
+      if (!showingSinlgeImage && currTravelLine >= 1){
         showTravelImageSingle();
         showingSinlgeImage = true;
       }
 
       if (currTravelLine == 10 ){
         document.getElementById('singleLineImage').src = "assets/hubble.jpg";
+        zoomInImage();
       }
       else if (currPlanet >= 10){
         console.log("hereee: "+currTravelLine);
@@ -487,6 +514,7 @@ function rollBackLines(){
 
 }
 async function nextPlanet(){
+  zoomOutImage();
   travelling = true;
   updateCurrPlanet();
   currPlanet += 1;

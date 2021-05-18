@@ -76,7 +76,7 @@ function getSpeedNext(){
     return 22000;
   }
   else if (currLine == 9){
-    return 127000;
+    return 131000;
   }
   else if (currLine == 10){
     return 1000;
